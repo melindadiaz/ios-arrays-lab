@@ -11,11 +11,23 @@ Create an array of strings called `colors` that contain "orange", "red", "yellow
 Then, using array subscripting and string interpolation, print out the String `"orange, yellow, and lavender are some of my favorite colors"`.
 
 
+var colors: [String]
+colors = [ "orange", "red", "yellow", "turquiose", "lavender"]
+var lastColor = colors[colors.count - 1 ]
+var firstColor = colors[0]
+var myColor = colors[1]
+print("\(firstColor), \(myColor) and \(lastColor) are some of my favorite colors")
+
 ## Question 2
 
 Remove "Illinois" and "Kansas" from the array below.
 
 `var westernStates = ["California", "Oregon", "Washington", "Idaho", "Illinois", "Kansas"]`
+
+var westernStates = ["California", "Oregon", "Washington", "Idaho", "Illinois", "Kansas"]
+let removedLastState = westernStates.popLast() 
+let removedSecondToLastStates = westernStates.remove(at: westernStates.count - 2 )
+print("we removed \(removedLastState!) and \(removedSecondToLastStates)")
 
 
 ## Question 3
@@ -23,13 +35,16 @@ Remove "Illinois" and "Kansas" from the array below.
 Iterate through the array below. For each state, print out the name of the state, a colon, and whether it is or is not **in the continental United States.**
 
 `let moreStates = ["Hawaii", "New Mexico", "Alaska", "Montana", "Texas", "New York", "Florida"]`
-
-
 ## Question 4
 
 Print out how many non-whitespace characters are in `myString`:
 
 `let myString = "This is good practice with Strings!"`
+
+let myString = "This is good practice with Strings!"
+var whiteSpace = myString.count
+print(whiteSpace)
+
 
 Iterate through the array below. For each sentence, print out how many non-whitespace characters are in it.
 
