@@ -54,16 +54,23 @@ print("\(eachState) is NOT in the continental U.S.")
 Print out how many non-whitespace characters are in `myString`:
 
 `let myString = "This is good practice with Strings!"`
+```
 
-let myString = "This is good practice with Strings!"
-var whiteSpace = myString.count
+
+var myString = "This is good practice with Strings!"
+var whiteSpace = myString.replacingOccurrences(of: " ", with: "").count
 print(whiteSpace)
 
+```
 
 Iterate through the array below. For each sentence, print out how many non-whitespace characters are in it.
 
 `let myFavoriteQuotes = ["To be or not to be, that is the question.", "The only source of knowledge is experience.", "Mr. Gorbachev, tear down this wall!", "Four score and twenty years ago..."]`
+```
+let myNewQuotes = myFavoriteQuotes.joined().replacingOccurrences(of: " ", with: "").count
+print(myNewQuotes)
 
+```
 
 ## Question 5
 
@@ -72,6 +79,15 @@ Iterate through `garden` and place any 🌷 that you find into the `basket`. Rep
 ```swift
 var garden = ["dirt","🌷","dirt","🌷","dirt","dirt","🌷","dirt","🌷","dirt"]
 var basket = [String]()
+for index in garden {
+    if index == "🌷" {
+         basket.append("🌷")
+    }
+    garden.remove(at: 0)
+    garden.append("dirt")
+}
+print(basket.count)
+print(garden)
 ```
 
 ## Question 6
@@ -84,7 +100,15 @@ The below array represents an unfinished batting lineup for a baseball team. **Y
 - Put "Reyes" to bat 8th instead.
 
 `var battingLineup = ["Reyes", "Jeter", "Ramirez", "Pujols","Griffey","Thomas","Jones", "Rodriguez"]`
-
+```
+battingLineup.append("Suzuki")
+battingLineup.remove(at: 0)
+battingLineup.remove(at: 0)
+battingLineup.remove(at: 3)
+battingLineup.insert("Guerrero", at: 5)
+battingLineup.insert("Tejada", at: 0)
+battingLineup.insert("Reyes", at: 7)
+```
 
 ## Question 7
 
@@ -106,17 +130,35 @@ numbers = [4,2,6,73,32,4,2,1]
 
 target = 32
 
+for number in numbers {
+    
+    if number == target {
+        print("true")
+    }
+}
+
 //true
 ```
 
 Ex. 2
 
-```swift
+swift
 numbers = [32459,2,4,5,1,4,2,1]
 
 target = 3
 
 //false
+```
+let numbers = [32459,2,4,5,1,4,2,1]
+
+var target = 3
+var check = Bool()
+for number in numbers {
+    if number == target {
+    check = true
+    }
+}
+print(check)
 ```
 
 
@@ -128,6 +170,16 @@ Find the largest value in an array of Int.  Do not use the built-in `max()` meth
 let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int($0)}
 
 //This creates an array of 100 numbers in between 0 and 200.  For now, you don't need to worry about how it does that.
+
+var maxNum = 0
+for number in arrayOfNumbers {
+    if number > maxNum {
+        maxNum = number
+    }
+}
+print(maxNum)
+
+
 ```
 
 
@@ -147,7 +199,14 @@ let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int
 Iterate through `secondListOfNumbers`, and print out all the odd numbers.
 
 `var secondListOfNumbers = [19,13,14,19,101,10000,141,404]`
-
+```
+var secondListOfNumbers = [19,13,14,19,101,10000,141,404]
+for number in secondListOfNumbers {
+    if number % 2 == 1 {
+  print(number)
+    }
+}
+```
 
 ## Question 11
 
@@ -155,14 +214,29 @@ Iterate through `thirdListOfNumbers`, and print out the sum.
 
 `var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]`
 
+```
 
+var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]
+var sum = 0
+for numbers in thirdListOfNumbers {
+    sum += numbers
+}
+print(sum)
+```
 ## Question 12
 
 Iterate through `thirdListOfNumbers`, and print out the sum of all the even numbers.
 
 `var thirdListOfNumbers = [11, 26, 49, 61, 25, 40, 74, 3, 22, 23]`
-
-
+```
+for number in thirdListOfNumbers {
+    if number % 2 == 0 {
+        print(number)
+    sum += number
+    }
+}
+print(sum)
+```
 ## Question 13
 
 Append every Int that appears in both `listOne` and `listTwo` to the `sharedElements` array. Then print **how many Ints** are shared.
@@ -196,8 +270,16 @@ Find the second smallest number in an Array of Ints
 If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 
 Find the sum of all the multiples of 3 or 5 below 1000.
-
-
+```
+var sum = 0
+for num in 0...1000 {
+    if  (num % 3 == 0) && (num % 5 == 0) {
+       print(num)
+   sum += num
+    }
+}
+print(sum)
+```
 ## Question 4
 
 Make an array that contains all elements that appear **more than twice** in `someRepeatsAgain`.
